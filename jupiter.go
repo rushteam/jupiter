@@ -148,10 +148,7 @@ func (app *Application) Run() error {
 		app.signalHooker = hookSignals
 	}
 	if app.governor == nil {
-		app.governor = &http.Server{
-			Handler: govern.DefaultServeMux,
-			Addr:    "127.0.0.1:9990", // 默认治理端口
-		}
+		app.SetGovernor("127.0.0.1:9990") // 默认治理端口
 	}
 
 	if app.registerer == nil {
